@@ -1,11 +1,11 @@
 'use client'
 
-import MainComp from './Main'
+import Main from './Main'
 
 export default function Home() {
   return (
     <>
-      <MainComp />
+      <Main />
     </>
   )
 }

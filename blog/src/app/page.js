@@ -1,6 +1,6 @@
 'use client'
 
-import MainComp from './home/Main'
+import MainComp from './Main'
 
 export default function Home() {
   return (

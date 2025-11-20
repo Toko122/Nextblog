@@ -1,6 +1,6 @@
 'use client'
 
-import axios from '../features/auth/axios'
+import axios from '../app/features/auth/axios'
 import React, { useEffect, useState } from 'react'
 import { FaUser } from 'react-icons/fa'
 import { useRouter } from 'next/navigation'

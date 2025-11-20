@@ -6,7 +6,7 @@ import { FaUser } from 'react-icons/fa'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
-export const Main = () => {
+export default function Main(){
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(false)
   const router = useRouter()

@@ -1,12 +1,12 @@
 'use client'
 
-import Main from "./home/page";
+import MainComp from './home/Main'
 
 export default function Home() {
-
   return (
     <>
-       <Main />
-    </> 
-  );
+      <MainComp />
+    </>
+  )
 }
+

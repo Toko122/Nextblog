@@ -21,7 +21,7 @@ export async function POST(req) {
         user.resetTokenExpire = resetTokenExpire
         await user.save()
 
-        const resetLink = `https://nextblog-ten-chi.vercel.app/features/auth/resetPassword/${resetToken}`
+        const resetLink = `https://nextblog-5jye2scte-toko122s-projects.vercel.app/features/auth/resetPassword/${resetToken}`
 
         const transporter = nodemailer.createTransport({
              service: 'gmail',

@@ -1,6 +1,6 @@
 'use client'
 
-import Main from "./home/Main";
+import Main from "./home/page";
 
 export default function Home() {
 

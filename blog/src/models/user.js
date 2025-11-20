@@ -13,9 +13,11 @@ const userSchema = new mongoose.Schema({
     },
     imageUrl: {type: String},
     posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post', default: []}],
+    friends: [{type: mongoose.Schema.Types.ObjectId, ref: 'User', default: []}],
     bio: {type:String},
     resetToken: {type: String},
     resetTokenExpire: {type: Date},
 }, { timestamps: true })
 
-export default mongoose.models.User || mongoose.model("User", userSchema)
+const User = mongoose.models?.User || mongoose.model("User", userSchema)
+export default User

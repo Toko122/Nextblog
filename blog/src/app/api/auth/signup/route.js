@@ -15,16 +15,22 @@ export async function POST(req){
             )
         }
 
+     if (password.length < 8) {
+      return NextResponse.json({ message: "Password must be at least 8 characters long" }, { status: 400 });
+    }
+
+
         const existedUser = await User.findOne({
             $or: [{email}, {phone}, {username}]
         })
-        
-        if(existedUser) {
-            return NextResponse.json(
-                {message: 'user already exist'}, 
-                {status: 409}
-            )
-        }
+         if (existedUser) {
+      let msg = "User already exists";
+      if (existedUser.email === email) msg = "Email already exists";
+      else if (existedUser.username === username) msg = "Username already exists";
+      else if (existedUser.phone === phone) msg = "Phone already exists";
+
+      return NextResponse.json({ message: msg }, { status: 409 });
+    }
 
         const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -32,7 +38,7 @@ export async function POST(req){
             email, phone, username, password: hashedPassword
         })
 
-        // Don't send password back
+
         const userResponse = {
             _id: user._id,
             email: user.email,

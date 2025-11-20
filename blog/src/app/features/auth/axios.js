@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'http://localhost:3000/api'
+    baseURL: 'https://nextblog-ten-chi.vercel.app/api'
 })
 
 instance.interceptors.request.use((config) => {

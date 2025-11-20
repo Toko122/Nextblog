@@ -25,8 +25,8 @@ export default function Main(){
 
         const res = await axios.get('/post/allPost')
         const filtered = res.data.posts
-          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
           .filter(post => !seen.includes(post._id))
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
         
         setPosts(filtered)
 

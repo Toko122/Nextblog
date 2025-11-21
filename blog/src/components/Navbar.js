@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { HiMenuAlt3 } from "react-icons/hi";
 import { useAuth } from '@/app/features/auth/AuthProvider';
 import { FaUser } from "react-icons/fa";
-import axios from '../app/features/auth/axios';
+import axios from '@/lib/apiClient';
 import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
 

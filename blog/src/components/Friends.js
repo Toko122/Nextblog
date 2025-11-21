@@ -1,6 +1,6 @@
 'use client'
 
-import axios from '../app/features/auth/axios'
+import axios from '@/lib/apiClient'
 import React, { useEffect, useRef, useState } from 'react'
 import { FaUser } from 'react-icons/fa'
 import { IoMdClose } from 'react-icons/io'

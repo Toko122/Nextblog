@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { IoIosNotifications } from "react-icons/io";
 import { FaTimes, FaUser } from "react-icons/fa";
-import axios from '../app/features/auth/axios';
+import axios from '@/lib/apiClient';
 import Link from 'next/link';
 
 const Notification = () => {
@@ -121,7 +121,7 @@ const Notification = () => {
 
     return (
         <>
-            <div className='rounded-full w-[50px] h-[50px] bg-indigo-600 hover:bg-indigo-700 bottom-8 right-12 cursor-pointer fixed z-50 transition-colors shadow-xl'
+            <div className='rounded-full w-[50px] h-[50px] bg-indigo-600 hover:bg-indigo-700 md:bottom-8 md:right-12 bottom-2 right-2 cursor-pointer fixed z-50 transition-colors shadow-xl'
                  onClick={() => setIsOpen(!isOpen)}>
                 <div className='relative'>
                     <div className='absolute select-none -top-1 -right-1 text-white text-xs font-bold w-[20px] text-center h-[20px] bg-red-500 rounded-full flex items-center justify-center border-2 border-white'>

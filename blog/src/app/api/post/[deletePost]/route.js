@@ -1,5 +1,5 @@
 import connectDb from "@/lib/config";
-import { getUserIdFromToken } from "@/middleware/getUserIdFromToken";
+import { getUserIdFromToken } from "@/app/getUserIdFromToken";
 import Post from "@/models/post";
 import { NextResponse } from "next/server";
 import jwt from 'jsonwebtoken'

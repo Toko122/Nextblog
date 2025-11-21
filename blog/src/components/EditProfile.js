@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
 import { Spinner } from './ui/spinner'
 import { FaRegUserCircle } from 'react-icons/fa'
-import axios from '../app/features/auth/axios'
+import axios from '@/lib/apiClient'
 
 const EditProfile = ({ onClose }) => {
 

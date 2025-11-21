@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useState } from "react";
-import axios from "../app/features/auth/axios";
+import axios from "@/lib/apiClient";
 import { useAuth } from "../app/features/auth/AuthProvider";
 import { useRouter } from "next/navigation";
 import { Spinner } from "./ui/spinner";

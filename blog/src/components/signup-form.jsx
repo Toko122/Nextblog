@@ -17,7 +17,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import axios from "../app/features/auth/axios"
+import axios from "@/lib/apiClient"
 import { Spinner } from "./ui/spinner"
 
 export function SignupForm({ ...props }) {

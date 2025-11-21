@@ -1,14 +1,6 @@
 import axios from "axios";
 
 const resolveBaseUrl = () => {
-  const explicit =
-    process.env.NEXT_PUBLIC_API_URL ||
-    process.env.API_URL ||
-    process.env.NEXT_PUBLIC_SITE_URL;
-  if (explicit) {
-    return explicit.replace(/\/$/, "");
-  }
-
   if (typeof window === "undefined") {
     const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL || process.env.VERCEL_URL;
     if (vercelUrl) {

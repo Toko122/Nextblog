@@ -1,7 +1,7 @@
 'use client'
 
 import { useParams, useRouter } from 'next/navigation'
-import axios from '../../auth/axios'
+import axios from '../../../../lib/apiClient'
 import React, { useEffect, useMemo, useState } from 'react'
 import { FaUser } from 'react-icons/fa'
 import { IoMdAdd } from "react-icons/io";

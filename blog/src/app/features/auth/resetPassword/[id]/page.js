@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
-import axios from '../../axios'
+import axios from '../../../../../lib/apiClient'
 
    const ResetPassword= () => {
 

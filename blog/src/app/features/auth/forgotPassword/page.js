@@ -1,6 +1,6 @@
 'use client'
 
-import axios from '../../auth/axios'
+import axios from '../../../../lib/apiClient'
 import React, { useState } from 'react'
 
 const ForgotPassword = () => {

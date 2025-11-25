@@ -115,7 +115,7 @@ const Post = ({ userProfile }) => {
 
        
             <div className='flex flex-col gap-3 w-full'>
-              <h2 className='text-lg font-medium px-2'>{post.title}</h2>
+              <h2 className='text-lg font-medium px-2 wrap-break-word'>{post.title}</h2>
 
               {post.imageUrl && (
                 <img

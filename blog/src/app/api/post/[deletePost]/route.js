@@ -1,5 +1,4 @@
 import connectDb from "@/lib/config";
-import { getUserIdFromToken } from "@/app/getUserIdFromToken";
 import Post from "@/models/post";
 import { NextResponse } from "next/server";
 import jwt from 'jsonwebtoken'
@@ -16,10 +15,9 @@ export async function DELETE(req, {params}) {
          const token = authHeader.split(' ')[1]
 
          const decoded = jwt.verify(token, process.env.JWT)
-         decoded.id
 
         const {deletePost} = await params
-        const userId = getUserIdFromToken(req)
+        const userId = decoded.id
         
         const deletedPost = await Post.findOneAndDelete({_id: deletePost, userId})
 

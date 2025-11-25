@@ -195,17 +195,14 @@ const Navbar = () => {
                 <div className="absolute pt-1 top-[101%] left-0 bg-white w-full rounded-md shadow-md max-h-[250px] overflow-y-auto z-40">
                   {filteredUsers.map((user) => (
                      <Link
-                key={user._id}
-                href={`/features/profile/${user._id}`}
-                onClick={() => {
-                  if(!loggedIn){
-                    router.push('/auth/login')
-                  }
-                  setInputValue('')
-                  setSearchOpen(false)
-                }}
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-              >
+                     key={user._id}
+                     href={loggedIn ? `/features/profile/${user._id}` : '/features/auth/login'}
+                     onClick={() => {
+                       setInputValue('')
+                       setSearchOpen(false)
+                     }}
+                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                   >
                 <div className='flex gap-2 items-center'>
                    {user.imageUrl ? (
                     <img src={user.imageUrl} className='w-[30px] h-[30px] rounded-full object-cover' />

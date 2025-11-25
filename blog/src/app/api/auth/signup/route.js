@@ -3,38 +3,7 @@ import User from "../../../../models/user";
 import connectDb from "@/lib/config";
 import { NextResponse } from "next/server";
 
-const getAllowedOrigin = (req) => {
-  const configuredOrigin =
-    process.env.NEXT_PUBLIC_VERCEL_URL
-
-  if (configuredOrigin) {
-    return configuredOrigin;
-  }
-
-  const requestOrigin = req.headers.get("origin");
-  if (requestOrigin) {
-    return requestOrigin;
-  }
-
-  return "*";
-};
-
-export function OPTIONS(req) {
-  const origin = getAllowedOrigin(req);
-
-  return new Response(null, {
-    status: 200,
-    headers: {
-      "Access-Control-Allow-Origin": origin,
-      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-      "Access-Control-Max-Age": "86400",
-    },
-  });
-}
-
 export async function POST(req){
-    const origin = getAllowedOrigin(req)
 
     try {
         await connectDb()
@@ -43,17 +12,12 @@ export async function POST(req){
         if (!email || !phone || !password || !username) {
             return NextResponse.json(
                 {message: 'All fields are required'}, 
-                {
-                  status: 400,
-                  headers: {
-                    "Access-Control-Allow-Origin": origin
-                  }
-                }
+                { status: 400,}
             )
         }
 
      if (password.length < 8) {
-      return NextResponse.json({ message: "Password must be at least 8 characters long" }, { status: 400, headers: { "Access-Control-Allow-Origin": origin } });
+      return NextResponse.json({ message: "Password must be at least 8 characters long" }, { status: 400});
     }
 
 
@@ -66,7 +30,7 @@ export async function POST(req){
       else if (existedUser.username === username) msg = "Username already exists";
       else if (existedUser.phone === phone) msg = "Phone already exists";
 
-      return NextResponse.json({ message: msg }, { status: 409, headers: { "Access-Control-Allow-Origin": origin } });
+      return NextResponse.json({ message: msg }, { status: 409});
     }
 
         const hashedPassword = await bcrypt.hash(password, 10)
@@ -86,24 +50,14 @@ export async function POST(req){
 
         return NextResponse.json(
             {message: 'user registered', user: userResponse}, 
-            {
-              status: 200,
-              headers: {
-                "Access-Control-Allow-Origin": origin
-              }
-            }
+            {status: 200,}
         )
 
     } catch(err) {
         console.error('Signup error:', err)
         return NextResponse.json(
             {message: 'error register user', error: err.message}, 
-            {
-              status: 500,
-              headers: {
-                "Access-Control-Allow-Origin": origin
-              }
-            }
+            {status: 500, }
         )
     }
 }

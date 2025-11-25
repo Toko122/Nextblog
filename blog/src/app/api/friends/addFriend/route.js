@@ -53,3 +53,49 @@ export async function POST(req) {
     );
   }
 }
+
+export async function DELETE(req) {
+      try{
+        await connectDb()
+        const { senderId, targetUserId } = await req.json();
+        const deleted = await FriendRequest.findOneAndDelete({
+            sender: senderId,
+            recipient: targetUserId,
+            status: 'pending'
+        })
+
+          if (!deleted) {
+      return NextResponse.json(
+        { message: "request not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(
+      { message: "friend request canceled" },
+      { status: 200 }
+    );
+      }catch(err){
+        return NextResponse.json({message: "error canceling friend request"}, {status: 500})
+      }
+}
+
+export async function GET(req) {
+      try{ 
+        await connectDb()
+        const {searchParams} = new URL(req.url)
+        const senderId = searchParams.get('senderId')
+        const targetUserId = searchParams.get('targetUserId')
+        
+        const pending = await FriendRequest.findOne({
+            sender: senderId,
+            recipient: targetUserId,
+            status: 'pending'
+        })
+        
+        return NextResponse.json({ pending: !!pending });
+
+      }catch(err){
+        return NextResponse.json({message: 'error geting friend request', error: err.message}, {status: 500});
+      }
+}

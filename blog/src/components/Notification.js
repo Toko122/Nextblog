@@ -15,6 +15,22 @@ const Notification = () => {
     const userId = typeof window !== 'undefined' ? localStorage.getItem('userId') : null;
 
     useEffect(() => {
+    if (!userId) return;
+
+    const loadInitialCount = async () => {
+        try {
+            const res = await axios.get(`/friends/getAllFriends?userId=${userId}`);
+            setRequests(res.data.requests || []);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    loadInitialCount();
+}, [userId]);
+
+    useEffect(() => {
+        if (!userId) return;
       const fetchRequests = async () => {
         try {
             const res = await axios.get(`/friends/getAllFriends?userId=${userId}`);
@@ -23,7 +39,12 @@ const Notification = () => {
             console.log(err);
          }
      };
-     if(userId) fetchRequests()
+        fetchRequests()
+
+        const interval = setInterval(fetchRequests, 5000)
+
+        return () => clearInterval(interval)
+
     }, [userId])
 
     const handleAccept = async (requestId) => {
@@ -33,6 +54,9 @@ const Notification = () => {
                 currentUserId: userId
             });
             setRequests(prev => prev.filter(req => req._id !== requestId));
+            
+            window.dispatchEvent(new Event('friends-updated'))
+
         } catch (err) {
             console.log(err);
         }

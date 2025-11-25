@@ -1,15 +1,11 @@
 import axios from "axios";
 
 const resolveBaseUrl = () => {
-  if (typeof window === "undefined") {
-    const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL || process.env.VERCEL_URL;
-    if (vercelUrl) {
-      return `https://${vercelUrl}/api`;
-    }
-    return "http://localhost:3000/api";
+   if (process.env.NODE_ENV === "production") {
+    return process.env.NEXT_PUBLIC_API_URL;
   }
+  return "http://localhost:3000/api";
 
-  return "/api";
 };
 
 const apiClient = axios.create({

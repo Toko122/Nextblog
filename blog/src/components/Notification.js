@@ -56,7 +56,7 @@ const Notification = () => {
             setRequests(prev => prev.filter(req => req._id !== requestId));
             
             window.dispatchEvent(new Event('friends-updated'))
-
+            setIsOpen(true)
         } catch (err) {
             console.log(err);
         }
@@ -69,6 +69,7 @@ const Notification = () => {
                 currentUserId: userId
             });
             setRequests(prev => prev.filter(req => req._id !== requestId));
+            setIsOpen(true)
         } catch (err) {
             console.log(err);
         }
@@ -85,7 +86,7 @@ const Notification = () => {
     }, [isOpen])
 
     const MessagePopup = () => (
-        <div ref={modalRef} className='fixed bottom-24 right-12 w-80 h-96 bg-white shadow-2xl rounded-lg border border-gray-200 z-50'>
+        <div ref={modalRef} className='fixed md:bottom-24 md:right-12 bottom-16 right-8 w-80 h-96 bg-white shadow-2xl rounded-lg border border-gray-200 z-50'>
             <div className='flex justify-between items-center p-4 border-b border-gray-200'>
                 <h3 className='text-lg font-semibold text-gray-800'>Friend Requests</h3>
                 <button 

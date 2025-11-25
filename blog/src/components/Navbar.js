@@ -200,6 +200,7 @@ const Navbar = () => {
                      onClick={() => {
                        setInputValue('')
                        setSearchOpen(false)
+                       setOpenMenu(false)
                      }}
                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                    >

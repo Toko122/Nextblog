@@ -71,7 +71,7 @@ const Friends = ({onClose}) => {
                                 <img
                                     src={friend.imageUrl}
                                     alt='profile'
-                                    className={`rounded-full object-cover border-2 border-indigo-400`}
+                                    className={`rounded-full w-11 h-11 object-cover`}
                                 />
                             ) : (
                                 <div className={`rounded-full bg-indigo-500 p-2 flex items-center justify-center`}> 

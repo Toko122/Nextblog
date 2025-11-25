@@ -2,7 +2,7 @@ import axios from "axios";
 
 const resolveBaseUrl = () => {
    if (process.env.NODE_ENV === "production") {
-    return process.env.NEXT_PUBLIC_VERCEL_URL;
+    return "https://nextblog-ten-chi.vercel.app/api";
   }
   return "http://localhost:3000/api";
 

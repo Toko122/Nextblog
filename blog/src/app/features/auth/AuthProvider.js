@@ -20,10 +20,6 @@ const AuthProvider = ({children}) => {
     const logout = () => {
         localStorage.removeItem('token')
         localStorage.removeItem('userId')
-
-        if (typeof document !== 'undefined') {
-            document.cookie = 'token=; path=/; Max-Age=0'
-        }
         setUserId(null)
         setLoggedIn(false)
     }
